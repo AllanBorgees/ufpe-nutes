@@ -1,0 +1,37 @@
+<div class="container">
+  <form #f="ngForm" (ngSubmit)="atualizarPessoa(f)">
+  <div class="ui-g">
+         <div class="ui-g-12">
+            <h1>Atualizar cadastro</h1>
+         </div>
+         <div class="ui-g-12 ui-fluid">
+           <label>Nome </label>
+           <input pInputText type="text" name="nome" #nome="ngModel" [(ngModel)]="pessoa.nome"
+           required  >
+               <div *ngIf="nome.hasError('required') && nome.dirty" class="ui message ui-messages-error">Informe seu nome</div>
+          </div>
+         <div class="ui-g-12 ui-fluid">
+            <label>Nome da Mãe</label>
+            <input pInputText type="text" name="nomeMae"  #nomeMae="ngModel" [(ngModel)]="pessoa.nomeMae"
+            required  >
+                 <div *ngIf="nomeMae.hasError('required') && nomeMae.dirty" class="ui message ui-messages-error">Informe o nome da sua mãe</div>
+          
+         </div>
+         <div class="ui-g-12 ui-fluid">
+             <label>Nome do Pai</label>
+             <input pInputText type="text"  name="nomePai"  #nomePai="ngModel" [(ngModel)]="pessoa.nomePai"
+             required >
+             <div *ngIf="nomePai.hasError('required') && nomePai.dirty" class="ui message ui-messages-error">Informe o nome da sua mãe</div>
+         </div>
+         <div class="ui-g-12 ui-fluid">
+           <label>Data de Aniversário</label>
+           <p-calendar dateFormat="dd/mm/yy" name="dataAniversario" [inline]="false"
+           [readonlyInput]="false" [showIcon]="true" [(ngModel)]="pessoa.dataAniversario"> </p-calendar>
+          </div>
+          <div class="ui-g-4">
+            <button pButton type="submit" label="Atualizar" ></button>
+            <a routerLink="/pessoas" >Voltar para home</a>
+           </div>
+          
+  </div>
+  </form>
